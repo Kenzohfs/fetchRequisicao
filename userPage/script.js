@@ -19,7 +19,7 @@ fetch('https://fake-github.herokuapp.com/api/' + username).then(function (result
 
 fetch('https://fake-github.herokuapp.com/api/' + username + '/repos').then(function (resultado) {
     resultado.json().then(function (data) {
-        
+        data.forEach(get)
     });
 }).catch(function (erro) {
     console.log('Erro: ', erro);
@@ -29,5 +29,13 @@ function mostrarItems(imagem, nome, login) {
     document.body.appendChild(imagem);
     document.body.appendChild(nome);
     document.body.appendChild(login);
+
+}
+
+function tabelaRepositorios() {
+    const tabela = document.createElement('table');
+    const linhaHeader = document.createElement('tr');
+    const colunaNome = document.createElement('th');
+    const colunaLink = document.createElement('th');
 
 }

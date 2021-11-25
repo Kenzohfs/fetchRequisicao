@@ -26,7 +26,7 @@ function tabela() {
 
     document.body.appendChild(tabela);
 
-    return tabela;
+    headerTabela(tabela);
 }
 
 function headerTabela(tabela) {
@@ -64,6 +64,8 @@ function colocarRegistors(tabela) {
         linha.appendChild(botaoRedirecionamento);
         botaoRedirecionamento.appendChild(criarBotao(e.username));
     });
+
+    botaoCadastro()
 }
 
 function criarBotao(username) {
@@ -78,4 +80,24 @@ function criarBotao(username) {
     return botao;
 }
 
-headerTabela(tabela());
+tabela();
+
+function botaoCadastro() {
+    const button = document.createElement('button');
+
+    document.body.appendChild(button);
+    button.innerText = "Cadastrar pessoa"
+}
+
+function criarModal() {
+    const fundo = document.createElement('div');
+    
+    fundo.id = "fundo"
+
+    fundo.style.background = 'gray';
+    fundo.style.opacity = '0.4';
+
+    document.body.appendChild(fundo);
+}
+
+criarModal();

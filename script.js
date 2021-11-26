@@ -23,7 +23,7 @@ const lista = [
 
 function tabela() {
     let tabelaAtual = document.querySelector('table');
-    
+
     if (tabelaAtual) {
         tabelaAtual.remove();
     }
@@ -89,7 +89,15 @@ function criarBotao(username) {
 tabela();
 
 function botaoCadastro() {
+    let botaoAtual = document.getElementById('teste');
+
+    if (botaoAtual) {
+        botaoAtual.remove();
+    }
+
     const button = document.createElement('button');
+
+    button.id = 'teste'
 
     document.body.appendChild(button);
     button.innerText = "Cadastrar pessoa"

@@ -23,3 +23,34 @@ a {
     height: 100%;
     position: absolute;
 }
+
+#modal {
+    width: 50%;
+    height: 80%;
+    background-color: white;
+    position: absolute;
+    border-radius: 15px;
+}
+
+#headerModal {
+    width: 100%;
+    height: 20%;
+}
+
+#mainModal {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#footerModal {
+    width: 100%;
+    height: 20%;
+}
+
+input {
+    padding: 10px;
+    outline: none;
+    width: fit-content;
+}

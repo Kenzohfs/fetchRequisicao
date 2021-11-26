@@ -22,6 +22,12 @@ const lista = [
 ];
 
 function tabela() {
+    let tabelaAtual = document.querySelector('table');
+    
+    if (tabelaAtual) {
+        tabelaAtual.remove();
+    }
+
     const tabela = document.createElement("table");
 
     document.body.appendChild(tabela);
@@ -87,17 +93,81 @@ function botaoCadastro() {
 
     document.body.appendChild(button);
     button.innerText = "Cadastrar pessoa"
+
+    button.onclick = criarModal;
 }
 
 function criarModal() {
     const fundo = document.createElement('div');
-    
+    const modal = document.createElement('div');
+
     fundo.id = "fundo"
+    modal.id = 'modal';
 
     fundo.style.background = 'gray';
     fundo.style.opacity = '0.4';
 
     document.body.appendChild(fundo);
+    document.body.appendChild(modal);
+
+    conteudoModal(modal);
 }
 
-criarModal();
+function conteudoModal(modal) {
+    const header = document.createElement('div');
+    const main = document.createElement('div');
+    const footer = document.createElement('div');
+
+    header.id = 'headerModal';
+    main.id = 'mainModal';
+    footer.id = 'footerModal';
+
+    modal.appendChild(header);
+    modal.appendChild(main);
+    modal.appendChild(footer);
+
+    inputModal(main);
+    botaoModal(footer);
+}
+
+let inputName 
+let inputUsername 
+
+
+function inputModal(main) {
+    inputName = document.createElement('input');
+    inputUsername = document.createElement('input');
+
+    inputName.id = 'inputName'
+    inputName.id = 'inputUsername'
+
+    inputName.placeholder = 'Digite o nome';
+    inputUsername.placeholder = 'Digite o usuário';
+
+    main.appendChild(inputName);
+    main.appendChild(inputUsername);
+}
+
+function botaoModal(footer) {
+    const botaoCadastrarModal = document.createElement('button');
+
+    botaoCadastrarModal.innerText = 'Cadastrar';
+
+    footer.appendChild(botaoCadastrarModal);
+
+    botaoCadastrarModal.onclick = getInputValues;
+}
+
+function getInputValues() {
+    let obj = {
+        nome: inputName.value,
+        username: inputUsername.value
+    };
+
+    lista.push(obj);
+
+    modal.remove();
+    fundo.remove();
+
+    tabela();
+}

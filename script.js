@@ -21,7 +21,7 @@ const lista = [
     { nome: "Otavio Matheus Neves", username: "otavionvs" },
 ];
 
-function tabela() {
+function tabela(listaParameter) {
     let tabelaAtual = document.querySelector('table');
 
     if (tabelaAtual) {
@@ -32,10 +32,10 @@ function tabela() {
 
     document.body.appendChild(tabela);
 
-    headerTabela(tabela);
+    headerTabela(tabela, listaParameter);
 }
 
-function headerTabela(tabela) {
+function headerTabela(tabela, listaParameter) {
     const linhaHeader = document.createElement('tr')
     const nameHeader = document.createElement('th');
     const usernameHeader = document.createElement('th');
@@ -51,11 +51,11 @@ function headerTabela(tabela) {
 
     tabela.appendChild(linhaHeader);
 
-    colocarRegistors(tabela);
+    colocarRegistors(tabela, listaParameter);
 }
 
-function colocarRegistors(tabela) {
-    lista.forEach(function (e) {
+function colocarRegistors(tabela, listaParameter) {
+    listaParameter.forEach(function (e) {
         const linha = document.createElement("tr");
         const colunaName = document.createElement("td");
         const colunaUsername = document.createElement("td");
@@ -86,10 +86,8 @@ function criarBotao(username) {
     return botao;
 }
 
-tabela();
-
 function botaoCadastro() {
-    let botaoAtual = document.getElementById('teste');
+    let botaoAtual = document.getElementById('botaoAtual');
 
     if (botaoAtual) {
         botaoAtual.remove();
@@ -97,7 +95,7 @@ function botaoCadastro() {
 
     const button = document.createElement('button');
 
-    button.id = 'teste'
+    button.id = 'botaoAtual'
 
     document.body.appendChild(button);
     button.innerText = "Cadastrar pessoa"
@@ -138,16 +136,12 @@ function conteudoModal(modal) {
     botaoModal(footer);
 }
 
-let inputName 
-let inputUsername 
-
-
 function inputModal(main) {
-    inputName = document.createElement('input');
-    inputUsername = document.createElement('input');
+    let inputName = document.createElement('input');
+    let inputUsername = document.createElement('input');
 
     inputName.id = 'inputName'
-    inputName.id = 'inputUsername'
+    inputUsername.id = 'inputUsername'
 
     inputName.placeholder = 'Digite o nome';
     inputUsername.placeholder = 'Digite o usuário';
@@ -167,9 +161,12 @@ function botaoModal(footer) {
 }
 
 function getInputValues() {
+    let nome = document.querySelector('#inputName')
+    let username = document.querySelector('#inputUsername')
+
     let obj = {
-        nome: inputName.value,
-        username: inputUsername.value
+        nome: nome.value,
+        username: username.value
     };
 
     lista.push(obj);
@@ -177,5 +174,50 @@ function getInputValues() {
     modal.remove();
     fundo.remove();
 
-    tabela();
+    tabela(lista);
 }
+
+function filterInput() {
+    const inputFilter = document.createElement('input');
+    inputFilter.id = 'inputFilter';
+
+    inputFilter.placeholder = 'Pesquisar nome ou usuário...';
+
+    document.body.appendChild(inputFilter);
+
+    botaoFilter();
+}
+
+function botaoFilter() {
+    const pesquisarFilter = document.createElement('button');
+    const limparFilter = document.createElement('button');
+
+    pesquisarFilter.innerText = 'Pesquisar';
+    limparFilter.innerText = 'Limpar';
+
+    document.body.appendChild(pesquisarFilter);
+    document.body.appendChild(limparFilter);
+
+    pesquisarFilter.onclick = searchFilter;
+    limparFilter.onclick = cleanFilter;
+}
+
+function searchFilter() {
+    let inputFilterValue = document.querySelector('#inputFilter').value;
+
+    const listaFiltrada = lista.filter(function (element) {
+        return element.nome.toLowerCase().indexOf(inputFilterValue.toLowerCase()) > -1 || element.username.toLowerCase().indexOf(inputFilterValue.toLowerCase()) > -1;
+    });
+
+    tabela(listaFiltrada)
+}
+
+function cleanFilter() {
+    let inputFilterValue = document.querySelector('#inputFilter');
+    inputFilterValue.value = '';
+
+    tabela(lista);
+}
+
+filterInput()
+tabela(lista);

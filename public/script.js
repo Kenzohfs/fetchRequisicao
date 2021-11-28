@@ -21,8 +21,6 @@ const lista = [
     { nome: "Otavio Matheus Neves", username: "otavionvs" },
 ];
 
-console.log("Deploy has been sucesso");
-
 function tabela(listaParameter) {
     let tabelaAtual = document.querySelector('table');
 

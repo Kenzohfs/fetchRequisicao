@@ -90,17 +90,14 @@ function criarBotao(username) {
 }
 
 function botaoCadastro() {
-    let botaoAtual = document.getElementById('botaoAtual');
-
-    if (botaoAtual) {
-        botaoAtual.remove();
-    }
-
+    const divCadastrar = document.createElement('div');
     const button = document.createElement('button');
 
-    button.id = 'botaoAtual'
+    button.id = 'botaoAtual';
+    divCadastrar.id = 'divCadastrar';
 
-    document.body.appendChild(button);
+    document.body.appendChild(divCadastrar);
+    divCadastrar.appendChild(button);
     button.innerText = "Cadastrar pessoa"
 
     button.onclick = criarModal;
@@ -108,6 +105,7 @@ function botaoCadastro() {
 
 function criarModal() {
     let modalAtual = document.querySelector('#modal');
+    let divCadastrar = document.querySelector('#divCadastrar');
 
     if (modalAtual) {
         modalAtual.remove();
@@ -122,7 +120,7 @@ function criarModal() {
     // fundo.style.opacity = '0.4';
 
     // document.body.appendChild(fundo);
-    document.body.appendChild(modal);
+    divCadastrar.appendChild(modal);
 
     conteudoModal(modal);
 }
@@ -170,18 +168,27 @@ function inputModal(main) {
 
 function botaoModal(footer) {
     const botaoCadastrarModal = document.createElement('button');
+    const botaoCancelarModal = document.createElement('button');
 
+    botaoCancelarModal.innerText = 'Cancelar';
     botaoCadastrarModal.innerText = 'Cadastrar';
-    botaoCadastrarModal.id = 'botaoCadastrarModal'
+
+    botaoCadastrarModal.id = 'botaoCadastrarModal';
+    botaoCancelarModal.id = 'botaoCancelarModal';
+
+    botaoCadastrarModal.style.backgroundColor = 'aliceblue';
+    botaoCancelarModal.style.backgroundColor = 'rgb(212, 113, 113)';
 
     footer.appendChild(botaoCadastrarModal);
+    footer.appendChild(botaoCancelarModal);
 
     botaoCadastrarModal.onclick = getInputValues;
+    botaoCancelarModal.onclick = cancelModal;
 }
 
 function getInputValues() {
-    let nome = document.querySelector('#inputName')
-    let username = document.querySelector('#inputUsername')
+    let nome = document.querySelector('#inputName');
+    let username = document.querySelector('#inputUsername');
 
     if (nome.value == '' || username.value == '') {
         alertModal(1);
@@ -200,6 +207,17 @@ function getInputValues() {
 
     alertModal(2);
     tabela(lista);
+}
+
+function cancelModal() {
+    let modal = document.querySelector("#modal");
+    let nome = document.querySelector('#inputName');
+    let username = document.querySelector('#inputUsername');
+
+    nome.value = '';
+    username.value = '';
+    
+    modal.remove();
 }
 
 function alertModal(codigo) {

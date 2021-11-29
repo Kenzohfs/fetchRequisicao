@@ -44,6 +44,13 @@ th {
     margin: 0px 5px;
 }
 
+#divCadastrar {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 1vw;
+}
+
 #botaoAtual {
     margin: 1vw 0px;
     padding: 10px;
@@ -52,9 +59,7 @@ th {
     background-color: royalblue;
     color: white;
     font-weight: bold;
-    position: absolute;
-    top: 0;
-    right: 1vw;
+    width: 10vw;
 }
 
 body {
@@ -80,9 +85,6 @@ a {
     background-color: white;
     border-radius: 15px;
     border: 1px solid black;
-    top: 10vh;
-    right: 1vw;
-    position: absolute;
 }
 
 #headerModal {
@@ -102,15 +104,16 @@ a {
 }
 
 #footerModal {
+    display: flex;
     padding: 10px;
     text-align: center;
+    justify-content: space-between;
 }
 
-#botaoCadastrarModal {
+#botaoCadastrarModal, #botaoCancelarModal {
     padding: 6px;
     border-radius: 5px;
     border-width: 1px;
-    background-color: aliceblue;
     font-weight: bold;
 }
 

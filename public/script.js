@@ -18,7 +18,7 @@ const lista = [
     { nome: "Diego Planinscheck", username: "frst157" },
     { nome: "Camilly Vitoria da Rocha Goltz", username: "VitoriaCamilly" },
     { nome: "Bruna Alves Mafra", username: "BMafra" },
-    { nome: "Otavio Matheus Neves", username: "otavionvs" },
+    { nome: "Otavio Matheus Neves", username: "otavionvs" }
 ];
 
 function tabela(listaParameter) {

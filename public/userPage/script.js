@@ -76,18 +76,18 @@ function inserirRepositorioTabela(element) {
     colunaLink.appendChild(link);
 }
 
-function homePage() {
-    const voltar = document.createElement("button");
-    document.body.appendChild(voltar);
+// function homePage() {
+//     const voltar = document.createElement("button");
+//     document.body.appendChild(voltar);
 
-    voltar.id = 'voltarButton'
-    voltar.innerText = 'Voltar'
-    voltar.onclick = link;
-}
+//     voltar.id = 'voltarButton'
+//     voltar.innerText = 'Voltar'
+//     voltar.onclick = link;
+// }
 
-function link() {
-    window.location.href = "../index.html"
-}
+// function link() {
+//     window.location.href = "../index.html"
+// }
 
 usuario();
-homePage();
+// homePage();

@@ -1,7 +1,39 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#avatarImagem {
+    width: 20vw;
+    border-radius: 360%;
+    margin: 1vw 0;
+}
+
+#nome {
+    margin: 0;
+}
+
+#login {
+    margin-bottom: 2vw;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 6px 9px;
+    text-align: center;
+}
+
+th {
+    background-color: cornflowerblue;
 }
 
 a {

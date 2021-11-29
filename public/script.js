@@ -41,9 +41,9 @@ function headerTabela(tabela, listaParameter) {
     const usernameHeader = document.createElement('th');
     const button = document.createElement('th');
 
-    nameHeader.innerText = "Fullname";
-    usernameHeader.innerText = "Username"
-    button.innerText = "Redirecionamento";
+    nameHeader.innerText = "Nome Completo";
+    usernameHeader.innerText = "Usuário"
+    button.innerText = "Github";
 
     linhaHeader.appendChild(nameHeader);
     linhaHeader.appendChild(usernameHeader);

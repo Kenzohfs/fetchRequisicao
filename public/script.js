@@ -59,7 +59,9 @@ function colocarRegistors(tabela, listaParameter) {
         const linha = document.createElement("tr");
         const colunaName = document.createElement("td");
         const colunaUsername = document.createElement("td");
-        const botaoRedirecionamento = document.createElement("td");
+        const divBotaoRedirecionamento = document.createElement("td");
+
+        divBotaoRedirecionamento.className = 'divBotaoRedirecionamento'
 
         colunaName.innerText = e.nome;
         colunaUsername.innerText = e.username;
@@ -67,9 +69,9 @@ function colocarRegistors(tabela, listaParameter) {
         tabela.appendChild(linha);
         linha.appendChild(colunaName);
         linha.appendChild(colunaUsername);
-        linha.appendChild(botaoRedirecionamento);
-        botaoRedirecionamento.appendChild(criarBotao(e.username));
-    });
+        linha.appendChild(divBotaoRedirecionamento);
+        divBotaoRedirecionamento.appendChild(criarBotao(e.username));
+    });    
 
     botaoCadastro()
 }
@@ -78,7 +80,9 @@ function criarBotao(username) {
     const botao = document.createElement("button")
     const link = document.createElement('a');
 
-    link.innerText = 'Repositorio'
+    botao.className = 'botaoRedirecionamento'
+
+    link.innerText = 'Repositório'
     link.href = './userPage/index.html?' + username
 
     botao.appendChild(link);

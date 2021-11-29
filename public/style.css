@@ -8,6 +8,8 @@
 
 #inputFilter { 
     margin: 1vw 0vw;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 #divBotaoFilter {
@@ -18,12 +20,38 @@
     margin-left: 0.5vw;
     height: 100%;
     border-width: 1px;
+    border-radius: 5px;
 }
 
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 6px 9px;
+}
+
+th {
+    background-color: cornflowerblue;
+}
+
+.divBotaoRedirecionamento {
+    text-align: center;
+}
+
+.botaoRedirecionamento {
+    background-color: mediumpurple;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+#botaoAtual {
+    margin: 4vh 0px;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    background-color: royalblue;
+    color: white;
+    font-weight: bold;
 }
 
 body {

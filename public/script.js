@@ -106,6 +106,11 @@ function botaoCadastro() {
 }
 
 function criarModal() {
+    let modalAtual = document.querySelector('#modal');
+
+    if (modalAtual) {
+        modalAtual.remove();
+    }
     // let fundo = document.createElement('div');
     let modal = document.createElement('div');
 
@@ -177,6 +182,11 @@ function getInputValues() {
     let nome = document.querySelector('#inputName')
     let username = document.querySelector('#inputUsername')
 
+    if (nome.value == '' || username.value == '') {
+        alertModal(1);
+        return;
+    }
+
     let values = {
         nome: nome.value,
         username: username.value
@@ -187,7 +197,27 @@ function getInputValues() {
     modal.remove();
     // fundo.remove();
 
+    alertModal(2);
     tabela(lista);
+}
+
+function alertModal(codigo) {
+    const alert = document.createElement('div');
+    alert.className = 'alert';
+
+    if (codigo == 1) {
+        document.body.appendChild(alert);
+        alert.innerText = 'Todos os campos devem estar preenchidos!';
+        alert.style.backgroundColor = 'red'
+        alert.style.border = '2px solid rgb(141, 15, 15)';
+    } else {
+        document.body.appendChild(alert);
+        alert.style.backgroundColor = 'rgb(20, 161, 20)';
+        alert.style.border = '2px solid green';
+        alert.innerText = 'Cadastrado!'
+    }
+
+    setTimeout(function () { document.body.removeChild(alert) }, 3000);  
 }
 
 function filterDiv() {

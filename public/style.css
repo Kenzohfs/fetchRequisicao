@@ -43,13 +43,16 @@ th {
 }
 
 #botaoAtual {
-    margin: 4vh 0px;
+    margin: 1vw 0px;
     padding: 10px;
     border-radius: 5px;
     border-width: 1px;
     background-color: royalblue;
     color: white;
     font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 1vw;
 }
 
 body {
@@ -66,17 +69,18 @@ a {
     color: black;
 }
 
-#fundo {
+/* #fundo {
     width: 100%;   
     height: max-content;
-    position: absolute;
-}
+} */
 
 #modal {
     background-color: white;
     border-radius: 15px;
     border: 1px solid black;
-    margin-bottom: 5vh;
+    top: 10vh;
+    right: 1vw;
+    position: absolute;
 }
 
 #headerModal {
@@ -112,4 +116,15 @@ input {
     padding: 10px;
     outline: none;
     width: fit-content;
+}
+
+.alert {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
+    width: 10vw;
 }

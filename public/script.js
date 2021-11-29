@@ -164,17 +164,28 @@ function getInputValues() {
     let nome = document.querySelector('#inputName')
     let username = document.querySelector('#inputUsername')
 
-    let obj = {
+    let values = {
         nome: nome.value,
         username: username.value
     };
 
-    lista.push(obj);
+    lista.push(values);
 
     modal.remove();
     fundo.remove();
 
     tabela(lista);
+}
+
+function filterDiv() {
+    const filterDiv = document.createElement("div");
+
+    filterDiv.id = "filterDiv";
+
+    document.body.appendChild(filterDiv)
+
+    filterDiv.appendChild(filterInput());
+    filterDiv.appendChild(botaoFilter());
 }
 
 function filterInput() {
@@ -183,23 +194,31 @@ function filterInput() {
 
     inputFilter.placeholder = 'Pesquisar nome ou usuário...';
 
-    document.body.appendChild(inputFilter);
-
-    botaoFilter();
+    return inputFilter;
 }
 
 function botaoFilter() {
+    const divBotaoFilter = document.createElement('div');
     const pesquisarFilter = document.createElement('button');
     const limparFilter = document.createElement('button');
+
+    divBotaoFilter.id = 'divBotaoFilter'
+    pesquisarFilter.id = "pesquisarFilter";
+    limparFilter.id = "limparFilter";
 
     pesquisarFilter.innerText = 'Pesquisar';
     limparFilter.innerText = 'Limpar';
 
-    document.body.appendChild(pesquisarFilter);
-    document.body.appendChild(limparFilter);
+    pesquisarFilter.style.backgroundColor = 'rgb(59, 59, 221)';
+    limparFilter.style.backgroundColor = 'rgb(190, 64, 64)';
+
+    divBotaoFilter.appendChild(pesquisarFilter);
+    divBotaoFilter.appendChild(limparFilter);
 
     pesquisarFilter.onclick = searchFilter;
     limparFilter.onclick = cleanFilter;
+
+    return divBotaoFilter;
 }
 
 function searchFilter() {
@@ -219,5 +238,5 @@ function cleanFilter() {
     tabela(lista);
 }
 
-filterInput()
+filterDiv();
 tabela(lista);

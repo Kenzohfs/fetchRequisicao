@@ -29,6 +29,7 @@ table, th, td {
     border-collapse: collapse;
     padding: 6px 9px;
     text-align: center;
+    margin-bottom: 2vw;
 }
 
 th {

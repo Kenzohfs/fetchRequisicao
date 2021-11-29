@@ -1,36 +1,41 @@
 const username = document.location.search.replace('?', '');
 
- fetch('https://fake-github.herokuapp.com/api/search/' + username).then(function (resultado) {
-    resultado.json().then(function (data) {
-        const avatar = document.createElement("img")
-        avatar.id = 'avatarImagem'
-        avatar.src = data.avatar_url;
+function usuario() {
+    fetch('https://fake-github.herokuapp.com/api/search/' + username).then(function (resultado) {
+        resultado.json().then(function (data) {
+            const avatar = document.createElement("img")
+            avatar.id = 'avatarImagem'
+            avatar.src = data.avatar_url;
 
-        const nome = document.createElement("h3")
-        nome.id = 'nome'
-        nome.innerText = data.name;
+            const nome = document.createElement("h3")
+            nome.id = 'nome'
+            nome.innerText = data.name;
 
-        const login = document.createElement("p")
-        login.id = 'login'
-        login.innerText = data.login;
+            const login = document.createElement("p")
+            login.id = 'login'
+            login.innerText = data.login;
 
-        mostrarItems(avatar, nome, login);
+            mostrarItems(avatar, nome, login);
+        });
+    }).catch(function (erro) {
+        console.log('Erro: ', erro);
     });
-}).catch(function (erro) {
-    console.log('Erro: ', erro);
-});
 
-fetch('https://fake-github.herokuapp.com/api/search/' + username + '/repos').then(function (resultado) {
-    resultado.json().then(function (data) {
-        tabelaRepositorios();
-        data.forEach(function (e) {
-            inserirRepositorioTabela(e);
-        })
-        console.log("data: ", data)
+    repos()
+}
+
+function repos() {
+    fetch('https://fake-github.herokuapp.com/api/search/' + username + '/repos').then(function (resultado) {
+        resultado.json().then(function (data) {
+            tabelaRepositorios();
+            data.forEach(function (e) {
+                inserirRepositorioTabela(e);
+            })
+        });
+    }).catch(function (erro) {
+        console.log('Erro: ', erro);
     });
-}).catch(function (erro) {
-    console.log('Erro: ', erro);
-});
+}
 
 function mostrarItems(imagem, nome, login) {
     document.body.appendChild(imagem);
@@ -75,13 +80,14 @@ function homePage() {
     const voltar = document.createElement("button");
     document.body.appendChild(voltar);
 
+    voltar.id = 'voltarButton'
     voltar.innerText = 'Voltar'
     voltar.onclick = link;
 }
 
 function link() {
-    const url = document.location.search;
     window.location.href = "../index.html"
 }
 
+usuario();
 homePage();

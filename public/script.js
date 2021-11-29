@@ -81,6 +81,7 @@ function criarBotao(username) {
     botao.className = 'botaoRedirecionamento'
 
     link.innerText = 'Repositório'
+    link.target = '_blank'
     link.href = './userPage/index.html?' + username
 
     botao.appendChild(link);

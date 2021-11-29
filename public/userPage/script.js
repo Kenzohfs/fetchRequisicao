@@ -38,9 +38,11 @@ function repos() {
 }
 
 function mostrarItems(imagem, nome, login) {
-    document.body.appendChild(imagem);
-    document.body.appendChild(nome);
-    document.body.appendChild(login);
+    const divProfile = document.createElement("div");
+    document.body.appendChild(divProfile);
+    divProfile.appendChild(imagem);
+    divProfile.appendChild(nome);
+    divProfile.appendChild(login);
 }
 
 function tabelaRepositorios() {

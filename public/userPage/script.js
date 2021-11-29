@@ -1,6 +1,11 @@
 const username = document.location.search.replace('?', '');
 
 function usuario() {
+    const divProfile = document.createElement("div");
+    divProfile.id = "divProfile";
+    
+    document.body.appendChild(divProfile);
+
     fetch('https://fake-github.herokuapp.com/api/search/' + username).then(function (resultado) {
         resultado.json().then(function (data) {
             const avatar = document.createElement("img")
@@ -38,20 +43,22 @@ function repos() {
 }
 
 function mostrarItems(imagem, nome, login) {
-    const divProfile = document.createElement("div");
-    document.body.appendChild(divProfile);
     divProfile.appendChild(imagem);
     divProfile.appendChild(nome);
     divProfile.appendChild(login);
 }
 
 function tabelaRepositorios() {
+    const divTabela = document.createElement('div');
     const tabela = document.createElement('table');
     const linhaHeader = document.createElement('tr');
     const colunaNome = document.createElement('th');
     const colunaLink = document.createElement('th');
 
-    document.body.appendChild(tabela);
+    divTabela.id = "divTabela";
+
+    document.body.appendChild(divTabela);
+    divTabela.appendChild(tabela);
     tabela.appendChild(linhaHeader);
     linhaHeader.appendChild(colunaNome);
     linhaHeader.appendChild(colunaLink);

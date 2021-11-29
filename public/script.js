@@ -61,8 +61,6 @@ function colocarRegistors(tabela, listaParameter) {
         const colunaUsername = document.createElement("td");
         const divBotaoRedirecionamento = document.createElement("td");
 
-        divBotaoRedirecionamento.className = 'divBotaoRedirecionamento'
-
         colunaName.innerText = e.nome;
         colunaUsername.innerText = e.username;
 
@@ -108,16 +106,16 @@ function botaoCadastro() {
 }
 
 function criarModal() {
-    const fundo = document.createElement('div');
-    const modal = document.createElement('div');
+    // let fundo = document.createElement('div');
+    let modal = document.createElement('div');
 
-    fundo.id = "fundo"
+    // fundo.id = "fundo";
     modal.id = 'modal';
 
-    fundo.style.background = 'gray';
-    fundo.style.opacity = '0.4';
+    // fundo.style.background = 'gray';
+    // fundo.style.opacity = '0.4';
 
-    document.body.appendChild(fundo);
+    // document.body.appendChild(fundo);
     document.body.appendChild(modal);
 
     conteudoModal(modal);
@@ -136,8 +134,18 @@ function conteudoModal(modal) {
     modal.appendChild(main);
     modal.appendChild(footer);
 
+    headerConteudoModal(header);
     inputModal(main);
     botaoModal(footer);
+}
+
+function headerConteudoModal(header) {
+    const title = document.createElement('h3');
+
+    title.innerText = 'Complete os campos:';
+    title.style.margin = '0'
+
+    header.appendChild(title);
 }
 
 function inputModal(main) {
@@ -158,6 +166,7 @@ function botaoModal(footer) {
     const botaoCadastrarModal = document.createElement('button');
 
     botaoCadastrarModal.innerText = 'Cadastrar';
+    botaoCadastrarModal.id = 'botaoCadastrarModal'
 
     footer.appendChild(botaoCadastrarModal);
 
@@ -176,7 +185,7 @@ function getInputValues() {
     lista.push(values);
 
     modal.remove();
-    fundo.remove();
+    // fundo.remove();
 
     tabela(lista);
 }

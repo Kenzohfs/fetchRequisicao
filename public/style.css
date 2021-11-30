@@ -45,7 +45,7 @@ th {
 }
 
 #divCadastrar {
-    float: right;
+    width: 213px;
     position: absolute;
     top: 0;
     right: 1vw;

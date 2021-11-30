@@ -110,16 +110,11 @@ function criarModal() {
     if (modalAtual) {
         modalAtual.remove();
     }
-    // let fundo = document.createElement('div');
+    
     let modal = document.createElement('div');
 
-    // fundo.id = "fundo";
     modal.id = 'modal';
 
-    // fundo.style.background = 'gray';
-    // fundo.style.opacity = '0.4';
-
-    // document.body.appendChild(fundo);
     divCadastrar.appendChild(modal);
 
     conteudoModal(modal);
@@ -203,7 +198,6 @@ function getInputValues() {
     lista.push(values);
 
     modal.remove();
-    // fundo.remove();
 
     alertModal(2);
     tabela(lista);
